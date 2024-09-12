@@ -1,0 +1,51 @@
+.home-content{
+    display: flex;
+    align-items: center;
+    height: 80vh;
+    justify-content: space-between;
+}
+
+.imager{
+    >img{
+        width: 204px;
+        height: 302px;
+    }
+    padding-left: 4%;
+}
+
+.image-1{
+    margin-bottom: 250px;
+}
+
+.image-2{
+    margin-bottom: 100px;
+}
+.image-3{
+    margin-bottom: 250px;
+}
+.image-4{
+    margin-bottom: 100px;
+}
+
+.written-content{
+    width: 30vw;
+    padding-right: 4%;
+
+    
+}
+
+.written{
+    color: #5BA2BC;
+    font-size: 24px;
+    padding-bottom: 15vh;
+}
+
+.try-button{
+    width: 270px;
+    height: 69px;
+    font-size: 36px;
+    background: #3BA2DA;
+    border: none;
+    color: #ffffff;
+    border-radius: 8px;
+}
