@@ -1,5 +1,6 @@
 import React from "react";
 import Navbar from "./Navbar";
+import { Link } from "react-router-dom";
 import "../Styles/Home.css";
 import image1 from "../Vectors/image1.png";
 import image2 from "../Vectors/image2.png";
@@ -24,7 +25,7 @@ export default function Home() {
                         routine that works for you.
                     </div>
                     <div className="try-button-div">
-                        <button className="try-button">Try Now</button>
+                        <Link to="/form" ><button className="try-button">Try Now</button> </Link>
                     </div>
                 </div>
             </div>
