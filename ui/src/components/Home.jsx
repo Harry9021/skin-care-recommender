@@ -1,7 +1,9 @@
 import React from "react";
-import Navbar from "./Navbar";
 import { Link } from "react-router-dom";
 import "../Styles/Home.css";
+import "../Styles/Navbar.css";
+import DownArrow from "../Vectors/downarrow.svg"
+import Cart from "../Vectors/cart.png"
 import image1 from "../Vectors/image1.png";
 import image2 from "../Vectors/image2.png";
 import image3 from "../Vectors/image3.png";
@@ -10,7 +12,24 @@ import image4 from "../Vectors/image4.png";
 export default function Home() {
     return (
         <div className="home">
-            <Navbar />
+            <div className="navbar">
+                <div className="logger-black"></div>
+                <div className="logo">SKINCARE</div>
+                <div className="logger">
+                    <div className="logger-1">
+                        <div className="loginButton">
+                            <div style={{ fontSizes: 20 }}>Login/Signup</div>
+                            <div style={{ fontSize: 24 }}>My Account</div>
+                        </div>
+                        <div className="arrow">
+                            <img src={DownArrow} alt="" />
+                        </div>
+                    </div>
+                    <div className="cart">
+                        <img src={Cart} alt="" />
+                    </div>
+                </div>
+            </div>
             <div className="home-content">
                 <div className="imager">
                     <img className="image-1"src={image1} alt="" />
