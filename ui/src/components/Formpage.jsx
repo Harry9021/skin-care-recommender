@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "../Styles/Formpage.css";
 import image1 from "../Vectors/image5.png";
 import image2 from "../Vectors/image6.png";
+import { Link } from "react-router-dom";
 
 const Formpage = () => {
   const [formData, setFormData] = useState({
@@ -93,13 +94,13 @@ const Formpage = () => {
             <option value="serum">Serum</option>
           </select>
 
-          <button type="submit">Submit</button>
+          <Link to="/results"><button type="submit">Submit</button></Link>
         </form>
       </div>
 
       <div className="imager">
-        <img className="image-1"src={image1} alt="" />
-        <img className="image-2"src={image2} alt="" />
+        <img className="image-5"src={image1} alt="" />
+        <img className="image-6"src={image2} alt="" />
       </div>
     </div>
   );

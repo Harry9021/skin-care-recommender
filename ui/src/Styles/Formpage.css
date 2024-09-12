@@ -72,6 +72,16 @@
   button:hover {
     background-color: #555;
   }
+
+  .image-5{
+    width: 18vw !important ;
+    height: 40vh !important;
+    margin-bottom: 250px;
+  }
+  .image-6{
+    width: 16vw !important ;
+    height: 40vh !important;
+  }
   
   
   
