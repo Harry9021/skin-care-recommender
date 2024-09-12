@@ -2,6 +2,7 @@ import React from "react";
 import "../Styles/Results.css";
 import DownArrow from "../Vectors/downarrow.svg";
 import Cart from "../Vectors/cart.png";
+import Dummypro from "../Vectors/dummypro.png";
 
 export default function Results() {
     return (
@@ -27,21 +28,77 @@ export default function Results() {
             </div>
             <div className="result-content">
                 <div className="card-palets">
-                    <div className="cards">
-                        <div className="card-image"></div>
-                        <div className="card-info"></div>
+                    <div className="upper-cards">
+                        <div className="cards">
+                            <div className="card-image">
+                                <img src={Dummypro} alt="" />
+                            </div>
+                            <div className="card-info">
+                                <div className="detailer">
+                                    <div>Cetaphil Hydrating Moisturizer</div>
+                                    <div>size - 100ml</div>
+                                    <div>price - 400/-</div>
+                                </div>
+                                <div className="add-to-cart-div">
+                                    <button className="add-to-cart">
+                                        ADD TO CART
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="cards">
+                            <div className="card-image">
+                                <img src={Dummypro} alt="" />
+                            </div>
+                            <div className="card-info">
+                                <div className="detailer">
+                                <div>Cetaphil Hydrating Moisturizer</div>
+                                    <div>size - 100ml</div>
+                                    <div>price - 400/-</div>
+                                </div>
+                                <div className="add-to-cart-div">
+                                    <button className="add-to-cart">
+                                        ADD TO CART
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div className="cards">
-                        <div className="card-image"></div>
-                        <div className="card-info"></div>
-                    </div>
-                    <div className="cards">
-                        <div className="card-image"></div>
-                        <div className="card-info"></div>
-                    </div>
-                    <div className="cards">
-                        <div className="card-image"></div>
-                        <div className="card-info"></div>
+                    <div className="lower-cards">
+                        <div className="cards">
+                            <div className="card-image">
+                                <img src={Dummypro} alt="" />
+                            </div>
+                            <div className="card-info">
+                                <div className="detailer">
+                                <div>Cetaphil Hydrating Moisturizer</div>
+                                    <div>size - 100ml</div>
+                                    <div>price - 400/-</div>
+                                </div>
+                                <div className="add-to-cart-div">
+                                    <button className="add-to-cart">
+                                        ADD TO CART
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div className="cards">
+                            <div className="card-image">
+                                <img src={Dummypro} alt="" />
+                            </div>
+                            <div className="card-info">
+                                <div className="detailer">
+                                <div>Cetaphil Hydrating Moisturizer</div>
+                                    <div>size - 100ml</div>
+                                    <div>price - 400/-</div>
+                                </div>
+                                <div className="add-to-cart-div">
+                                    <button className="add-to-cart">
+                                        ADD TO CART
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
