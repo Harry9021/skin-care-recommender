@@ -5,7 +5,7 @@ const CartPage = () => {
   return (
     <div className="shopping-container">
       {/* Navbar */}
-      <div className="navbar">
+      <div className="navbar-cart">
         <h1>Shopping Cart</h1>
         <div className="account-options">
           <button>Login/Signup</button>

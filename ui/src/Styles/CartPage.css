@@ -8,7 +8,7 @@
   }
   
   /* Navbar */
-  .navbar {
+  .navbar-cart {
     width: 100%;
     height:150px; 
     background-color: #A9DBF6;  
@@ -22,7 +22,7 @@
     align-items: center;
   }
   
-  .navbar h1 {
+  .navbar-cart h1 {
     font-size: 24px;
     font-weight: bold;
   }
@@ -30,6 +30,7 @@
   .account-options {
     display: flex;
     align-items: center;
+    color: #000;
   }
   
   .account-options button {
