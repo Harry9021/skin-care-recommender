@@ -10,15 +10,19 @@
     font-size: 96px;
     font-family: 'Caveat';
     padding-left: 5%;
+    cursor: default;
 }
 .logger{
     align-self: center;
     padding-right: 2%;
     display: flex;
+    /* cursor: pointer; */
     
 }
 .logger-1{
     display: flex;
+    cursor: pointer;
+    margin-right: 20px;
 }
 .loginButton{
     display: flex;
@@ -31,4 +35,5 @@
         width: 48px;
         height: 48px;
     }
+    cursor: pointer;
 }

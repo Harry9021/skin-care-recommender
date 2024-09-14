@@ -1,60 +1,19 @@
 /* Container */
 .shopping-container {
     font-family: Arial, sans-serif;
-    padding: 30px;
+    /* padding: 30px; */
     background-color: #ffffff;
     min-height: 100vh;
     width: 100%;
   }
   
   /* Navbar */
-  .navbar-cart {
-    width: 100%;
-    height:150px; 
-    background-color: #A9DBF6;  
-    position: absolute;
-    padding: 30px;
-    top: 0;
-    left: 0;
-    z-index: 1;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-  }
-  
-  .navbar-cart h1 {
-    font-size: 24px;
-    font-weight: bold;
-  }
-  
-  .account-options {
-    display: flex;
-    align-items: center;
-    color: #000;
-  }
-  
-  .account-options button {
-    background: none;
-    border: none;
-    cursor: pointer;
-    margin-right: 10px;
-    font-size: 14px;
-  }
-  
-  .cart-icon {
-    position: relative;
-  }
-  
-  .icon {
-    width: 24px;
-    height: 24px;
-  }
-  
+
   /* Main Content */
   .main-content {
     display: flex;
     justify-content: center;
-    margin-top: 250px;
+    margin-top: 100px;
   }
   
   /* Shopping Cart Section */

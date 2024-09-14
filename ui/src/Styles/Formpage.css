@@ -22,11 +22,19 @@
   padding: 20px;
   font-size: 30px;
   margin-top: 60px;
+  margin-left: 20px;
   background-color: #C7E8F3;
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 2;
   position: relative;
+
+  >form >select{
+    background: #C7E8F3 ;
+    >option{
+      background: #ffffff;
+    }
+  }
 }
 
 form {
@@ -74,10 +82,10 @@ button:hover {
   background-color: #555;
 }
 
-.image-5, .image-6 {
+/* .image-5, .image-6 {
   width: 16vw !important;
   height: 42vh !important;
-}
+} */
 
 /* Responsive styles */
 @media (max-width: 1200px) {
@@ -127,4 +135,23 @@ button:hover {
       width: 80px;
       font-size: 12px;
   }
+}
+
+
+.imager-x {
+  margin-top: 50px;
+  /* display: flex; */
+  align-items: center;
+  justify-content: center;
+
+  >div > img {
+      width: 230px;
+      height: 350px;
+  }
+}
+.image-6{
+  margin-right: 200px;
+}
+.image-5{
+  margin-left: 180px;
 }

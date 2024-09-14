@@ -3,6 +3,7 @@ import "../Styles/Formpage.css";
 import image1 from "../Vectors/image5.png";
 import image2 from "../Vectors/image6.png";
 import { Link } from "react-router-dom";
+import { IoMdArrowRoundBack } from "react-icons/io";
 
 const Formpage = () => {
   const [formData, setFormData] = useState({
@@ -32,6 +33,11 @@ const Formpage = () => {
   return (
     <div className="form-image-container">
       <div className="blue-box">
+        <Link to="/">
+        <div className="backarrow">
+        <IoMdArrowRoundBack style={{width:30, height:30, marginLeft:10, marginTop:10}}/>
+        </div>
+        </Link>
       </div>
       <div className="form-container">
         <form onSubmit={handleSubmit}>
@@ -98,9 +104,9 @@ const Formpage = () => {
         </form>
       </div>
 
-      <div className="imager">
-        <img className="image-5"src={image1} alt="" />
-        <img className="image-6"src={image2} alt="" />
+      <div className="imager-x">
+        <div><img className="image-6"src={image2} alt="" /></div>
+        <div><img className="image-5"src={image1} alt="" /></div>
       </div>
     </div>
   );
