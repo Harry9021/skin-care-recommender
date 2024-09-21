@@ -2,19 +2,31 @@ import React from "react";
 import "../Styles/Results.css";
 import DownArrow from "../Vectors/downarrow.svg";
 import Cart from "../Vectors/cart.png";
-import Dummypro from "../Vectors/dummypro.png";
+import { useLocation } from "react-router-dom";
+import Resultcard from "./cards/Resultcard";
 
 export default function Results() {
+    const location = useLocation();
+    const recommendations = location.state?.recommendations || {}; // Default to an empty object
+
+    // Check if recommendations is an object with data
+    let items = [];
+    if (recommendations.data) {
+        try {
+            items = JSON.parse(recommendations.data); // Parse the JSON string
+        } catch (error) {
+            console.error("Error parsing recommendations data:", error);
+        }
+    }
+
     return (
         <div className="results">
             <div className="navbar">
-                <div className="logger-black">
-                    Here are Suggestions for you!
-                </div>
+                <div className="logger-black">Here are Suggestions for you!</div>
                 <div className="logger">
                     <div className="logger-1">
                         <div className="loginButton">
-                            <div style={{ fontSizes: 20 }}>Login/Signup</div>
+                            <div style={{ fontSize: 20 }}>Login/Signup</div>
                             <div style={{ fontSize: 24 }}>My Account</div>
                         </div>
                         <div className="arrow">
@@ -27,80 +39,13 @@ export default function Results() {
                 </div>
             </div>
             <div className="result-content">
-                <div className="card-palets">
-                    <div className="upper-cards">
-                        <div className="cards">
-                            <div className="card-image">
-                                <img src={Dummypro} alt="" />
-                            </div>
-                            <div className="card-info">
-                                <div className="detailer">
-                                    <div>Cetaphil Hydrating Moisturizer</div>
-                                    <div>size - 100ml</div>
-                                    <div>price - 400/-</div>
-                                </div>
-                                <div className="add-to-cart-div">
-                                    <button className="add-to-cart">
-                                        ADD TO CART
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="cards">
-                            <div className="card-image">
-                                <img src={Dummypro} alt="" />
-                            </div>
-                            <div className="card-info">
-                                <div className="detailer">
-                                <div>Cetaphil Hydrating Moisturizer</div>
-                                    <div>size - 100ml</div>
-                                    <div>price - 400/-</div>
-                                </div>
-                                <div className="add-to-cart-div">
-                                    <button className="add-to-cart">
-                                        ADD TO CART
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div className="lower-cards">
-                        <div className="cards">
-                            <div className="card-image">
-                                <img src={Dummypro} alt="" />
-                            </div>
-                            <div className="card-info">
-                                <div className="detailer">
-                                <div>Cetaphil Hydrating Moisturizer</div>
-                                    <div>size - 100ml</div>
-                                    <div>price - 400/-</div>
-                                </div>
-                                <div className="add-to-cart-div">
-                                    <button className="add-to-cart">
-                                        ADD TO CART
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="cards">
-                            <div className="card-image">
-                                <img src={Dummypro} alt="" />
-                            </div>
-                            <div className="card-info">
-                                <div className="detailer">
-                                <div>Cetaphil Hydrating Moisturizer</div>
-                                    <div>size - 100ml</div>
-                                    <div>price - 400/-</div>
-                                </div>
-                                <div className="add-to-cart-div">
-                                    <button className="add-to-cart">
-                                        ADD TO CART
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                {items.length > 0 ? (
+                    items.map((item, index) => (
+                        <Resultcard key={index} item={item} recommendationNumber={index + 1} />
+                    ))
+                ) : (
+                    <div>No recommendations available.</div>
+                )}
             </div>
         </div>
     );

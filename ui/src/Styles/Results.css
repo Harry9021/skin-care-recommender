@@ -1,5 +1,4 @@
-
-.logger-black{
+.logger-black {
     display: flex;
     align-items: center;
     justify-content: center;
@@ -8,76 +7,86 @@
     padding-left: 1%;
 }
 
-.card-image{
-    >img{
+.card-image {
+    >img {
         width: 225px;
         height: 210px;
     }
 }
 
-.result-content{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 80vh;
-}
-
-.card-palets{
+.result-content {
     display: flex;
     flex-direction: column;
-    box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3);
-    
-}
 
-.upper-cards{
-    display: flex;
-}
-
-.lower-cards{
-    display: flex;
-}
-
-.cards{
-    display: flex;
-    width: 565px;
-    height: 307px;
-    background: #C7E8F3;
     align-items: center;
-    justify-content: center;
-    padding: 30px;
-    border: 1px solid black;
-    
+    /* justify-content: center; */
+    /* height: 80vh; */
 }
 
-.card-info{
-    font-size: 24px;
-    font-weight: 700;
-    width: 240px;
-    padding: 10px 0 10px 15px;
-}
-
-.add-to-cart-div{
+.res-card {
+    margin: 20px 0;
+    /* margin-left: 30px; */
+    margin-bottom: 0px;
     display: flex;
-    justify-content: center;
-    margin-top: 10px;
-    >button{
-        color: #ffffff;
-        background: #fd3c3c;
-        width: 164px;
-        height: 40px;
-    }
+    box-shadow: 0px 2px 6px 3px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3);
+    width: 70%;
+    justify-self: center;
+    border-radius: 4px;
+    
+    padding: 10px 10px;
 }
 
+.res-img {
+    font-size: 32px;
+    width: 50px;
+    height: 100%;
+}
 
-/* Building Blocks/state-layer/5. dragged
+.res-details {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 0 10% 0 0;
+}
 
-position: absolute;
-width: 1130px;
-height: 615px;
-left: 64px;
-top: 755px;
+.res-details-upper {
+    display: flex;
+    flex-direction: column;
+}
 
-background: linear-gradient(0deg, #FFFFFF, #FFFFFF), #C7E8F3;
-/* M3/Elevation Light/5 */
-/* box-shadow: 0px 8px 12px 6px rgba(0, 0, 0, 0.15), 0px 4px 4px rgba(0, 0, 0, 0.3);
-transform: matrix(1, 0, 0, -1, 0, 0); */
+.res-brand {
+    font-size: 24px;
+    font-weight: 500;
+}
+
+.res-name {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.res-name-span {
+    display: inline-block;
+    white-space: nowrap;
+    width: 700px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.res-details-lower {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.res-price {
+    font-size: 20px;
+    font-weight: 400;
+}
+
+.add-to-cart {
+    background: #EC221F;
+    color: #ffffff;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: pointer;
+}
