@@ -1,39 +1,137 @@
-.navbar{
+.navbar {
     width: 100%;
-    height:151px;
+    height: 151px;
     background: #A9DBF6;
     display: flex;
     justify-content: space-between;
-    
+    align-items: center; /* Align items vertically */
+    padding: 0 5%; /* Add padding to the sides for consistency */
+    position: relative; /* For dropdown positioning */
 }
-.logo{
+
+.logo {
     font-size: 96px;
-    font-family: 'Caveat';
-    padding-left: 5%;
+    font-family: 'Caveat', cursive; /* Ensure correct font */
     cursor: default;
+    margin: 0; /* Remove padding in favor of margin for alignment */
 }
-.logger{
-    align-self: center;
-    padding-right: 2%;
+
+.logger {
     display: flex;
-    /* cursor: pointer; */
-    
+    align-items: center;
+    padding-right: 2%;
 }
-.logger-1{
+
+.logger-1 {
     display: flex;
     cursor: pointer;
     margin-right: 20px;
+    position: relative; /* So the popup is positioned relative to this */
 }
-.loginButton{
+
+.loginButton {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
 }
-.cart{
-    >img{
-        width: 48px;
-        height: 48px;
-    }
+
+.cart img {
+    width: 48px;
+    height: 48px;
+}
+
+.cart {
     cursor: pointer;
+}
+
+.dropdown-menu {
+    position: absolute;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 10px;
+    right: 0; /* Ensure it's aligned to the right side of the navbar */
+    top: 60px; /* Adjust dropdown placement */
+    z-index: 1000;
+    border-radius: 4px;
+}
+
+.dropdown-item {
+    display: block;
+    padding: 8px 16px;
+    color: black;
+    text-decoration: none;
+}
+
+.dropdown-item:hover {
+    background-color: #f1f1f1;
+}
+
+.google-auth {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+/* Popup Menu *//* Popup Menu */
+.popup-menu {
+    position: absolute;
+    top: 60px;
+    right: 0;
+    background-color: white;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 20px;
+    border-radius: 8px;
+    width: 350px;
+    z-index: 1000;
+    display: flex;
+    flex-direction: column;
+}
+
+.popup-login, .popup-signup {
+    margin-bottom: 20px;
+}
+
+.popup-login h2, .popup-signup h2 {
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.popup-login input, .popup-signup input {
+    display: block;
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.login-button, .signup-button {
+    width: 100%;
+    padding: 10px;
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.login-button:hover, .signup-button:hover {
+    background-color: #333;
+}
+
+.google-auth {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+}
+
+.popup-login p, .popup-signup p {
+    text-align: center;
+    cursor: pointer;
+}
+
+.popup-login p span, .popup-signup p span {
+    color: blue;
+    text-decoration: underline;
 }
