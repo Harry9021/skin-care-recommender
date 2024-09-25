@@ -8,7 +8,7 @@ import image1 from "../Vectors/image1.png";
 import image2 from "../Vectors/image2.png";
 import image3 from "../Vectors/image3.png";
 import image4 from "../Vectors/image4.png";
-import { GoogleOAuthProvider, GoogleLogin } from '@react-oauth/google';
+import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
 export default function Home() {
     const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -29,7 +29,10 @@ export default function Home() {
                     <div className="logger-black"></div>
                     <div className="logo">SKINCARE</div>
                     <div className="logger">
-                        <div className="logger-1" onClick={() => setDropdownOpen(!dropdownOpen)}>
+                        <div
+                            className="logger-1"
+                            onClick={() => setDropdownOpen(!dropdownOpen)}
+                        >
                             <div className="loginButton">
                                 <div style={{ fontSize: 20 }}>Login/Signup</div>
                                 <div style={{ fontSize: 24 }}>My Account</div>
@@ -42,12 +45,36 @@ export default function Home() {
                             <div className="popup-menu">
                                 {isLogin ? (
                                     <div className="popup-login">
-                                        <h2 style={{  fontFamily: "Satisfy, cursive", fontSize: "24px" }}>Welcome Back!</h2>
+                                        <h2
+                                            style={{
+                                                fontFamily: "Satisfy, cursive",
+                                                fontSize: "24px",
+                                            }}
+                                        >
+                                            Welcome Back!
+                                        </h2>
 
-                                        <input type="email" placeholder="Email" />
-                                        <input type="password" placeholder="Password" />
-                                        <button className="login-button">Login</button>
-                                        <p style={{marginTop: "20px"}}>New customer? <span onClick={() => setIsLogin(false)}>Create your account</span></p>
+                                        <input
+                                            type="email"
+                                            placeholder="Email"
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="Password"
+                                        />
+                                        <button className="login-button">
+                                            Login
+                                        </button>
+                                        <p style={{ marginTop: "20px" }}>
+                                            New customer?{" "}
+                                            <span
+                                                onClick={() =>
+                                                    setIsLogin(false)
+                                                }
+                                            >
+                                                Create your account
+                                            </span>
+                                        </p>
                                         <div className="google-auth">
                                             <GoogleLogin
                                                 onSuccess={handleLoginSuccess}
@@ -57,14 +84,42 @@ export default function Home() {
                                     </div>
                                 ) : (
                                     <div className="popup-signup">
-                                        <h2 style={{  fontFamily: "Satisfy, cursive", fontSize: "24px" }}>Welcome!</h2>
+                                        <h2
+                                            style={{
+                                                fontFamily: "Satisfy, cursive",
+                                                fontSize: "24px",
+                                            }}
+                                        >
+                                            Welcome!
+                                        </h2>
                                         <input type="text" placeholder="Name" />
-                                        <input type="text" placeholder="Gender" />
-                                        <input type="email" placeholder="Email" />
-                                        <input type="password" placeholder="New Password" />
-                                        <input type="password" placeholder="Confirm Password" />
-                                        <button className="signup-button">Sign Up</button>
-                                        <p style={{marginTop: "20px"}}>Already have an account? <span onClick={() => setIsLogin(true)}>Login</span></p>
+                                        <input
+                                            type="text"
+                                            placeholder="Gender"
+                                        />
+                                        <input
+                                            type="email"
+                                            placeholder="Email"
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="New Password"
+                                        />
+                                        <input
+                                            type="password"
+                                            placeholder="Confirm Password"
+                                        />
+                                        <button className="signup-button">
+                                            Sign Up
+                                        </button>
+                                        <p style={{ marginTop: "20px" }}>
+                                            Already have an account?{" "}
+                                            <span
+                                                onClick={() => setIsLogin(true)}
+                                            >
+                                                Login
+                                            </span>
+                                        </p>
                                         <div className="google-auth">
                                             <GoogleLogin
                                                 onSuccess={handleLoginSuccess}
