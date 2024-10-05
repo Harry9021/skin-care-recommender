@@ -2,11 +2,13 @@ import React from "react";
 import "../Styles/Results.css";
 import DownArrow from "../Vectors/downarrow.svg";
 import Cart from "../Vectors/cart.png";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
 import Resultcard from "./cards/Resultcard";
 
 export default function Results() {
     const location = useLocation();
+    const navigate = useNavigate(); // Initialize useNavigate
+
     const recommendations = location.state?.recommendations || {}; // Default to an empty object
 
     // Check if recommendations is an object with data
@@ -30,14 +32,18 @@ export default function Results() {
                             <div style={{ fontSize: 24 }}>My Account</div>
                         </div>
                         <div className="arrow">
-                            <img src={DownArrow} alt="" />
+                            <img src={DownArrow} alt="Down Arrow" />
                         </div>
                     </div>
-                    <div className="cart">
-                        <img src={Cart} alt="" />
-                    </div>
+                    <Link to="/cart">
+                        <img src={Cart} alt="Cart" style={{ height: '40px', width: '40px' }} />
+                    </Link>
                 </div>
             </div>
+
+            {/* Back Button */}
+            <button onClick={() => navigate(-1)} className="back-button">Back</button> 
+
             <div className="result-content">
                 {items.length > 0 ? (
                     items.map((item, index) => (

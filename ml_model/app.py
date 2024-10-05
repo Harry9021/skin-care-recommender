@@ -10,8 +10,7 @@ from sklearn.impute import SimpleImputer
 app = Flask(__name__)
 
 # Load the dataset
-file_path = 'skin-care-recommender/ml_model/to_be_use_dataset.csv'
-data = pd.read_csv(file_path)
+data = pd.read_csv("to_be_use_dataset.csv")
 
 # Step 1: Handle missing values
 # Fill missing values in 'concern', 'concern 2', 'concern 3' with the most frequent value (mode) 

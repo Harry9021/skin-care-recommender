@@ -16,6 +16,7 @@ export default function Router() {
                     <Route path="/results" element={<Results />} />
                     <Route path="/profile" element={<Profile />} />
                     <Route path="/cart" element={<CartPage />} />
+                    
                 </Routes>
             </BrowserRouter>
         </div>
