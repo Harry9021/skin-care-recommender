@@ -47,7 +47,6 @@ const Formpage = () => {
 
             const recommendations = await response.json();
             console.log("Recommended Products:", recommendations);
-            // alert("Recommendations retrieved successfully");
             navigate("/results", { state: { recommendations } });
 
         } catch (error) {
@@ -57,136 +56,47 @@ const Formpage = () => {
     };
 
     const getSkinTypeValue = (skinType) => {
-        console.log("calling...............");
         switch (skinType) {
-            case "dry":
-                return 0;
-            case "oily":
-                return 1;
-            case "combination":
-                return 2;
-            case "normal":
-                return 3;
-            default:
-                return 0;
+            case "dry": return 0;
+            case "oily": return 1;
+            case "combination": return 2;
+            case "normal": return 3;
+            default: return 0;
         }
     };
 
     const getConcernValue = (concern) => {
-        console.log("calling>>>>>>>>>>>");
-        switch (concern) {
-            case "anti-pollution":
-                return 0;
-            case "tan-removal":
-                return 1;
-            case "dryness":
-                return 2;
-            case "deep-nourishment":
-                return 3;
-            case "blackheads":
-                return 4;
-            case "oil-control":
-                return 5;
-            case "fine-lines":
-                return 6;
-            case "uneven-skin-tone":
-                return 7;
-            case "dark-spots":
-                return 8;
-            case "dark-circles":
-                return 9;
-            case "skin-tightening":
-                return 10;
-            case "under-eye":
-                return 11;
-            case "skin-inflammation":
-                return 12;
-            case "general-care":
-                return 13;
-            case "redness":
-                return 14;
-            case "skin-sagging":
-                return 15;
-            case "lightening":
-                return 16;
-            case "sun-protection":
-                return 17;
-            case "pigmentation":
-                return 18;
-            case "blackheads-removal":
-                return 19;
-            case "oily-skin":
-                return 20;
-            case "anti-ageing":
-                return 21;
-            case "hydration":
-                return 22;
-            case "dull-skin":
-                return 23;
-            case "uneven-texture":
-                return 24;
-            case "irregular-textures":
-                return 25;
-            case "pore-minimizing":
-                return 26;
-            case "excess-oil":
-                return 27;
-            case "daily-use":
-                return 28;
-            case "dullness":
-                return 29;
-            case "anti-acne-scarring":
-                return 30;
-            case "softening":
-                return 31;
-            case "acne":
-                return 32;
-            case "pore-care":
-                return 33;
-            default:
-                return 0;
-        }
+        const concernsMapping = {
+            "anti-pollution": 0, "tan-removal": 1, "dryness": 2,
+            "deep-nourishment": 3, "blackheads": 4, "oil-control": 5,
+            "fine-lines": 6, "uneven-skin-tone": 7, "dark-spots": 8,
+            "dark-circles": 9, "skin-tightening": 10, "under-eye": 11,
+            "skin-inflammation": 12, "general-care": 13, "redness": 14,
+            "skin-sagging": 15, "lightening": 16, "sun-protection": 17,
+            "pigmentation": 18, "blackheads-removal": 19, "oily-skin": 20,
+            "anti-ageing": 21, "hydration": 22, "dull-skin": 23,
+            "uneven-texture": 24, "irregular-textures": 25, "pore-minimizing": 26,
+            "excess-oil": 27, "daily-use": 28, "dullness": 29,
+            "anti-acne-scarring": 30, "softening": 31, "acne": 32,
+            "pore-care": 33
+        };
+        return concernsMapping[concern] || 0;
     };
 
     const concerns = [
-        "anti-pollution",
-        "tan-removal",
-        "dryness",
-        "deep-nourishment",
-        "blackheads",
-        "oil-control",
-        "fine-lines",
-        "uneven-skin-tone",
-        "dark-spots",
-        "dark-circles",
-        "skin-tightening",
-        "under-eye",
-        "skin-inflammation",
-        "general-care",
-        "redness",
-        "skin-sagging",
-        "lightening",
-        "sun-protection",
-        "pigmentation",
-        "blackheads-removal",
-        "oily-skin",
-        "anti-ageing",
-        "hydration",
-        "dull-skin",
-        "uneven-texture",
-        "irregular-textures",
-        "pore-minimizing",
-        "excess-oil",
-        "daily-use",
-        "dullness",
-        "anti-acne-scarring",
-        "softening",
-        "acne",
-        "pore-care",
+        "anti-pollution", "tan-removal", "dryness", "deep-nourishment",
+        "blackheads", "oil-control", "fine-lines", "uneven-skin-tone",
+        "dark-spots", "dark-circles", "skin-tightening", "under-eye",
+        "skin-inflammation", "general-care", "redness", "skin-sagging",
+        "lightening", "sun-protection", "pigmentation", "blackheads-removal",
+        "oily-skin", "anti-ageing", "hydration", "dull-skin",
+        "uneven-texture", "irregular-textures", "pore-minimizing", "excess-oil",
+        "daily-use", "dullness", "anti-acne-scarring", "softening", "acne", 
+        "pore-care"
     ];
 
     const getAvailableConcerns = (selected) => {
-        return concerns.filter((concern) => concern !== selected);
+        return concerns.filter(concern => concern !== selected);
     };
 
     return (
@@ -194,22 +104,13 @@ const Formpage = () => {
             <div className="blue-box">
                 <Link to="/">
                     <div className="backarrow">
-                        <IoMdArrowRoundBack
-                            style={{
-                                width: 30,
-                                height: 30,
-                                marginLeft: 10,
-                                marginTop: 10,
-                            }}
-                        />
+                        <IoMdArrowRoundBack style={{ width: 30, height: 30, marginLeft: 10, marginTop: 10 }} />
                     </div>
                 </Link>
             </div>
             <div className="form-container">
                 <form onSubmit={handleSubmit}>
-                    <h3>
-                        Fill Below Information to know your skincare products.
-                    </h3>
+                    <h3>Fill Below Information to know your skincare products.</h3>
 
                     <label>What is your skin type?</label>
                     <select name="skinType" onChange={handleChange} required>
@@ -223,20 +124,13 @@ const Formpage = () => {
                     <label>Skin concern 1?</label>
                     <select name="concern1" onChange={handleChange} required>
                         <option value="">Select</option>
-                        {concerns.map((concern) => (
+                        {concerns.map(concern => (
                             <option
                                 key={concern}
                                 value={concern}
-                                disabled={
-                                    formData.concern2 === concern ||
-                                    formData.concern3 === concern
-                                }
+                                disabled={formData.concern2 === concern || formData.concern3 === concern}
                             >
-                                {concern
-                                    .replace(/-/g, " ")
-                                    .replace(/\b\w/g, (char) =>
-                                        char.toUpperCase()
-                                    )}
+                                {concern.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase())}
                             </option>
                         ))}
                     </select>
@@ -244,40 +138,26 @@ const Formpage = () => {
                     <label>Skin concern 2?</label>
                     <select name="concern2" onChange={handleChange} required>
                         <option value="">Select</option>
-                        {getAvailableConcerns(formData.concern1).map(
-                            (concern) => (
-                                <option
-                                    key={concern}
-                                    value={concern}
-                                    disabled={formData.concern3 === concern}
-                                >
-                                    {concern
-                                        .replace(/-/g, " ")
-                                        .replace(/\b\w/g, (char) =>
-                                            char.toUpperCase()
-                                        )}
-                                </option>
-                            )
-                        )}
+                        {getAvailableConcerns(formData.concern1).map(concern => (
+                            <option key={concern} value={concern} disabled={formData.concern3 === concern}>
+                                {concern.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase())}
+                            </option>
+                        ))}
                     </select>
 
                     <label>Skin concern 3?</label>
                     <select name="concern3" onChange={handleChange} required>
                         <option value="">Select</option>
                         {getAvailableConcerns(formData.concern1)
-                            .filter((concern) => concern !== formData.concern2)
-                            .map((concern) => (
+                            .filter(concern => concern !== formData.concern2)
+                            .map(concern => (
                                 <option key={concern} value={concern}>
-                                    {concern
-                                        .replace(/-/g, " ")
-                                        .replace(/\b\w/g, (char) =>
-                                            char.toUpperCase()
-                                        )}
+                                    {concern.replace(/-/g, " ").replace(/\b\w/g, char => char.toUpperCase())}
                                 </option>
                             ))}
                     </select>
 
-                    <button type="submit">Submit</button>
+                    <button className="submit-button" type="submit">Submit</button>
                 </form>
             </div>
 

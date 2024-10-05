@@ -64,22 +64,22 @@ select {
   border-radius: 5px;
   font-size: 14px;
 }
-
-button {
+.submit-button {
   padding: 6px 10px;
-  background-color: #333;
-  color: #fff;
-  border: none;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 14px;
-  width: 100px;
-  text-align: center;
-  margin: 0 auto;
+  background-color: #333; /* Button background color */
+  color: #fff; /* Text color */
+  border: none; /* No border */
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer; /* Pointer cursor */
+  font-size: 14px; /* Font size */
+  width: 100px; /* Fixed width */
+  text-align: center; /* Centered text */
+  margin: 10px auto; /* Center the button horizontally and add vertical space */
+  display: block; /* Make it a block element to center properly */
 }
 
-button:hover {
-  background-color: #555;
+.submit-button:hover {
+  background-color: #555; /* Change background color on hover */
 }
 
 /* .image-5, .image-6 {

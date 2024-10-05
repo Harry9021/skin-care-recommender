@@ -1,17 +1,18 @@
-import React from "react";
+import React, { useContext } from "react";
 import "../Styles/Results.css";
 import DownArrow from "../Vectors/downarrow.svg";
 import Cart from "../Vectors/cart.png";
-import { Link, useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import Resultcard from "./cards/Resultcard";
+import { CartContext } from "./context/CartContext"; // Import CartContext
 
 export default function Results() {
     const location = useLocation();
-    const navigate = useNavigate(); // Initialize useNavigate
+    const navigate = useNavigate();
+    const { addToCart } = useContext(CartContext); // Access addToCart function
 
     const recommendations = location.state?.recommendations || {}; // Default to an empty object
 
-    // Check if recommendations is an object with data
     let items = [];
     if (recommendations.data) {
         try {
@@ -41,13 +42,17 @@ export default function Results() {
                 </div>
             </div>
 
-            {/* Back Button */}
-            <button onClick={() => navigate(-1)} className="back-button">Back</button> 
+            <button onClick={() => navigate(-1)} className="back-button">Back</button>
 
             <div className="result-content">
                 {items.length > 0 ? (
                     items.map((item, index) => (
-                        <Resultcard key={index} item={item} recommendationNumber={index + 1} />
+                        <Resultcard 
+                            key={index} 
+                            item={item} 
+                            recommendationNumber={index + 1} 
+                            addToCart={addToCart} // Pass the addToCart function
+                        />
                     ))
                 ) : (
                     <div>No recommendations available.</div>
