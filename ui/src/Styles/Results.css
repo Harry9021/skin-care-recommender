@@ -86,6 +86,13 @@
     border-radius: 5px;
     cursor: pointer;
 }
+.added-to-cart {
+    background: #868686;
+    color: #000000;
+    padding: 10px;
+    border-radius: 5px;
+    cursor: not-allowed;
+}
 .back-button {
     background-color: #253251;
     border: none;

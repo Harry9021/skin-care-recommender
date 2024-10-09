@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "../../Styles/Results.css";
 
 function Resultcard({ item, recommendationNumber, addToCart }) {
+    const [itemAdded, setItemAdded] = useState(false);
+
+    const handleAddToCart = () => {
+        addToCart(item);  // Call the function to add the item to the cart
+        setItemAdded(true); // Set itemAdded to true to indicate the item is added
+    };
+
     return (
         <div className="res-card">
             <div className="res-img">{recommendationNumber}.</div> {/* Replace with actual image later */}
@@ -14,8 +21,12 @@ function Resultcard({ item, recommendationNumber, addToCart }) {
                 </div>
                 <div className="res-details-lower">
                     <div className="res-price">₹ {item.price}</div>
-                    {/* Add to Cart Button */}
-                    <div className="add-to-cart" onClick={() => addToCart(item)}>Add to Cart</div> 
+                    <div
+                        className={itemAdded ? "added-to-cart" : "add-to-cart"}
+                        onClick={!itemAdded ? handleAddToCart : null}
+                    >
+                        {itemAdded ? "Added to Cart" : "Add to Cart"}
+                    </div>
                 </div>
             </div>
         </div>

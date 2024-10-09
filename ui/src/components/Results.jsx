@@ -25,7 +25,9 @@ export default function Results() {
     return (
         <div className="results">
             <div className="navbar">
-                <div className="logger-black">Here are Suggestions for you!</div>
+                <div className="logger-black">
+                    Here are Suggestions for you!
+                </div>
                 <div className="logger">
                     <div className="logger-1">
                         <div className="loginButton">
@@ -37,20 +39,26 @@ export default function Results() {
                         </div>
                     </div>
                     <Link to="/cart">
-                        <img src={Cart} alt="Cart" style={{ height: '40px', width: '40px' }} />
+                        <img
+                            src={Cart}
+                            alt="Cart"
+                            style={{ height: "40px", width: "40px" }}
+                        />
                     </Link>
                 </div>
             </div>
 
-            <button onClick={() => navigate(-1)} className="back-button">Back</button>
+            <button onClick={() => navigate(-1)} className="back-button">
+                Back
+            </button>
 
             <div className="result-content">
                 {items.length > 0 ? (
                     items.map((item, index) => (
-                        <Resultcard 
-                            key={index} 
-                            item={item} 
-                            recommendationNumber={index + 1} 
+                        <Resultcard
+                            key={index}
+                            item={item}
+                            recommendationNumber={index + 1}
                             addToCart={addToCart} // Pass the addToCart function
                         />
                     ))
