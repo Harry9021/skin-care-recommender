@@ -11,19 +11,19 @@ A full‑stack **skincare recommendation** system that lets users input their **
 - **Tailwind CSS** for utility‑first styling  
 - **React Router** for SPA routing  
 - **@react‑oauth/google** for Google OAuth sign‑in  
-- **axios** for HTTP requests citeturn10view0
+- **axios** for HTTP requests 
 
 ### API Gateway (backend)  
 - **Node.js** + **Express**  
 - **body‑parser** & **cors** middleware  
-- **axios** to forward requests to the ML service citeturn13view0
+- **axios** to forward requests to the ML service
 
 ### ML Service (ml_model)  
 - **Python 3**  
 - **Flask** REST API  
 - **pandas** for data handling  
 - **scikit‑learn** for KNN classifier  
-- **SimpleImputer** for missing‑value handling citeturn5view0
+- **SimpleImputer** for missing‑value handling
 
 ---
 
@@ -31,9 +31,9 @@ A full‑stack **skincare recommendation** system that lets users input their **
 
 - **File**: `ml_model/to_be_use_dataset.csv`  
 - **Contents**:  
-  - `skin type` (0–5), `concern`, `concern 2`, `concern 3` (0–33) citeturn4view0  
+  - `skin type` (0–5), `concern`, `concern 2`, `concern 3` (0–33)
   - `label` (product ID/category), `brand`, `name`, `price`  
-- **Mapping**: See `ml_model/data_kinds.txt` for numeric encoding of skin types & concerns citeturn4view0
+- **Mapping**: See `ml_model/data_kinds.txt` for numeric encoding of skin types & concerns
 
 ---
 
@@ -41,14 +41,14 @@ A full‑stack **skincare recommendation** system that lets users input their **
 
 1. **Data Preprocessing**  
    - Load CSV & drop rows missing `skin type`.  
-   - Impute missing `concern` fields with the most frequent value. citeturn3view0  
+   - Impute missing `concern` fields with the most frequent value. 
 2. **Feature Engineering**  
    - Features: `skin type`, `concern`, `concern 2`, `concern 3`.  
    - Target: `label` (the product to recommend).  
 3. **Model Training**  
    - **KNeighborsClassifier** with `n_neighbors=5`.  
    - Train/test split: 80% train, 20% test.  
-   - Evaluate accuracy via `accuracy_score`. citeturn3view0  
+   - Evaluate accuracy via `accuracy_score`. 
 4. **Recommendation**  
    - For a user’s input vector, retrieve the **10 nearest neighbors**.  
    - Return their `label`, `brand`, `name`, and `price` as suggestions.
