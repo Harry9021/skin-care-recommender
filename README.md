@@ -95,7 +95,7 @@ cd ml_model
 python -m venv venv
 # Windows: .\venv\Scripts\activate
 # macOS/Linux: source venv/bin/activate
-pip install -r requirements.txt
+pip install flask pandas numpy scikit-learn pickle
 python app.py
 # → http://localhost:5000
 ```
