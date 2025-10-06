@@ -95,7 +95,7 @@ cd ml_model
 python -m venv venv
 # Windows: .\venv\Scripts\activate
 # macOS/Linux: source venv/bin/activate
-pip install flask pandas numpy scikit-learn pickle
+pip install flask pandas numpy scikit-learn
 python app.py
 # → http://localhost:5000
 ```
@@ -114,6 +114,13 @@ cd ui
 npm install
 npm start
 # → http://localhost:3000
+```
+
+### If you have installed all required libs in environment you can run it concurrently in on terminal
+```bash
+cd skin-care-recommender
+npm i
+npm run dev
 ```
 
 ---

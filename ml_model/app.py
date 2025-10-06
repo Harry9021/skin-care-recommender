@@ -21,7 +21,7 @@ feature_columns = ['skin type', 'concern', 'concern 2', 'concern 3']
 data = None
 X_train_indices = None
 
-def load_and_preprocess_data(filepath="to_be_use_dataset.csv"):
+def load_and_preprocess_data(filepath="ml_model/to_be_use_dataset.csv"):
     """
     Load and preprocess the dataset with proper error handling
     """
