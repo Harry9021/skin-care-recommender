@@ -12,11 +12,10 @@ export default function Results() {
     const { addToCart } = useContext(CartContext); // Access addToCart function
 
     const recommendations = location.state?.recommendations || {}; // Default to an empty object
-
     let items = [];
-    if (recommendations.data) {
+    if (recommendations) {
         try {
-            items = JSON.parse(recommendations.data); // Parse the JSON string
+            items = recommendations // Parse the JSON string
         } catch (error) {
             console.error("Error parsing recommendations data:", error);
         }
