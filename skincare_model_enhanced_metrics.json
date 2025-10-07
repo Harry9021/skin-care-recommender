@@ -1,0 +1,151 @@
+{
+  "accuracy": 0.5707317073170731,
+  "precision_weighted": 0.5984936886797622,
+  "recall_weighted": 0.5707317073170731,
+  "f1_weighted": 0.560748868658181,
+  "precision_macro": 0.5685300737986606,
+  "recall_macro": 0.5463450625728327,
+  "f1_macro": 0.531458548427834,
+  "precision_micro": 0.5707317073170731,
+  "recall_micro": 0.5707317073170731,
+  "f1_micro": 0.5707317073170731,
+  "support": {
+    "sunscreen": 34,
+    "foundation": 18,
+    "cleanser": 40,
+    "face-moisturisers": 40,
+    "concealer": 30,
+    "mask-and-peel": 43
+  },
+  "knn": {
+    "accuracy": 0.5853658536585366,
+    "precision_weighted": 0.5858520597930097,
+    "recall_weighted": 0.5853658536585366,
+    "f1_weighted": 0.5746935481260353,
+    "precision_macro": 0.5436295867874815,
+    "recall_macro": 0.5420061306176217,
+    "f1_macro": 0.5311038163817471,
+    "precision_micro": 0.5853658536585366,
+    "recall_micro": 0.5853658536585366,
+    "f1_micro": 0.5853658536585366,
+    "per_class_precision": {
+      "cleanser": 0.6578947368421053,
+      "concealer": 0.52,
+      "face-moisturisers": 0.6410256410256411,
+      "foundation": 0.2,
+      "mask-and-peel": 0.7428571428571429,
+      "sunscreen": 0.5
+    },
+    "per_class_recall": {
+      "cleanser": 0.625,
+      "concealer": 0.43333333333333335,
+      "face-moisturisers": 0.625,
+      "foundation": 0.1111111111111111,
+      "mask-and-peel": 0.6046511627906976,
+      "sunscreen": 0.8529411764705882
+    },
+    "per_class_f1": {
+      "cleanser": 0.6410256410256411,
+      "concealer": 0.4727272727272727,
+      "face-moisturisers": 0.6329113924050633,
+      "foundation": 0.14285714285714285,
+      "mask-and-peel": 0.6666666666666666,
+      "sunscreen": 0.6304347826086957
+    },
+    "support": {
+      "sunscreen": 34,
+      "foundation": 18,
+      "cleanser": 40,
+      "face-moisturisers": 40,
+      "concealer": 30,
+      "mask-and-peel": 43
+    }
+  },
+  "ensemble": {
+    "accuracy": 0.5707317073170731,
+    "precision_weighted": 0.5984936886797622,
+    "recall_weighted": 0.5707317073170731,
+    "f1_weighted": 0.560748868658181,
+    "precision_macro": 0.5685300737986606,
+    "recall_macro": 0.5463450625728327,
+    "f1_macro": 0.531458548427834,
+    "precision_micro": 0.5707317073170731,
+    "recall_micro": 0.5707317073170731,
+    "f1_micro": 0.5707317073170731,
+    "per_class_precision": {
+      "cleanser": 0.6774193548387096,
+      "concealer": 0.6363636363636364,
+      "face-moisturisers": 0.6046511627906976,
+      "foundation": 0.2916666666666667,
+      "mask-and-peel": 0.6923076923076923,
+      "sunscreen": 0.5087719298245614
+    },
+    "per_class_recall": {
+      "cleanser": 0.525,
+      "concealer": 0.23333333333333334,
+      "face-moisturisers": 0.65,
+      "foundation": 0.3888888888888889,
+      "mask-and-peel": 0.627906976744186,
+      "sunscreen": 0.8529411764705882
+    },
+    "per_class_f1": {
+      "cleanser": 0.5915492957746479,
+      "concealer": 0.34146341463414637,
+      "face-moisturisers": 0.6265060240963856,
+      "foundation": 0.3333333333333333,
+      "mask-and-peel": 0.6585365853658537,
+      "sunscreen": 0.6373626373626373
+    },
+    "support": {
+      "sunscreen": 34,
+      "foundation": 18,
+      "cleanser": 40,
+      "face-moisturisers": 40,
+      "concealer": 30,
+      "mask-and-peel": 43
+    },
+    "knn": {
+      "accuracy": 0.5853658536585366,
+      "precision_weighted": 0.5858520597930097,
+      "recall_weighted": 0.5853658536585366,
+      "f1_weighted": 0.5746935481260353,
+      "precision_macro": 0.5436295867874815,
+      "recall_macro": 0.5420061306176217,
+      "f1_macro": 0.5311038163817471,
+      "precision_micro": 0.5853658536585366,
+      "recall_micro": 0.5853658536585366,
+      "f1_micro": 0.5853658536585366,
+      "per_class_precision": {
+        "cleanser": 0.6578947368421053,
+        "concealer": 0.52,
+        "face-moisturisers": 0.6410256410256411,
+        "foundation": 0.2,
+        "mask-and-peel": 0.7428571428571429,
+        "sunscreen": 0.5
+      },
+      "per_class_recall": {
+        "cleanser": 0.625,
+        "concealer": 0.43333333333333335,
+        "face-moisturisers": 0.625,
+        "foundation": 0.1111111111111111,
+        "mask-and-peel": 0.6046511627906976,
+        "sunscreen": 0.8529411764705882
+      },
+      "per_class_f1": {
+        "cleanser": 0.6410256410256411,
+        "concealer": 0.4727272727272727,
+        "face-moisturisers": 0.6329113924050633,
+        "foundation": 0.14285714285714285,
+        "mask-and-peel": 0.6666666666666666,
+        "sunscreen": 0.6304347826086957
+      },
+      "support": {
+        "sunscreen": 34,
+        "foundation": 18,
+        "cleanser": 40,
+        "face-moisturisers": 40,
+        "concealer": 30,
+        "mask-and-peel": 43
+      }
+    },
+    "ensemble": 
