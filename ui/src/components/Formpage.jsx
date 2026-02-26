@@ -5,6 +5,8 @@ import image2 from "../Vectors/image6.png";
 import { Link, useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+
 const Formpage = () => {
     const [formData, setFormData] = useState({
         skinType: "",
@@ -16,14 +18,15 @@ const Formpage = () => {
     // State to store categories fetched from backend
     const [categories, setCategories] = useState({
         skinTypes: [],
-        concerns1: [],  // Separate array for concern 1
-        concerns2: [],  // Separate array for concern 2
-        concerns3: []   // Separate array for concern 3
+        concerns1: [],
+        concerns2: [],
+        concerns3: []
     });
 
     const [isLoading, setIsLoading] = useState(false);
     const [isFetchingCategories, setIsFetchingCategories] = useState(true);
-    const [error, setError] = useState("");
+    const [apiError, setApiError] = useState("");
+    const [successMessage, setSuccessMessage] = useState("");
 
     const navigate = useNavigate();
 
@@ -32,7 +35,8 @@ const Formpage = () => {
         const fetchCategories = async () => {
             try {
                 setIsFetchingCategories(true);
-                const response = await fetch("http://localhost:5000/categories");
+                setApiError("");
+                const response = await fetch(`${API_BASE_URL}/api/categories`);
 
                 if (!response.ok) {
                     throw new Error(`Failed to fetch categories: ${response.status}`);
@@ -41,14 +45,32 @@ const Formpage = () => {
                 const data = await response.json();
 
                 if (data.status === "success" && data.categories) {
-                    // Extract skin types from the backend response
-                    const skinTypes = data.categories['skin type'] || [];
+                    // Handle both old format (array of strings) and new format (array of {value, label})
+                    const skinTypesRaw = data.categories['skin type'] || [];
+                    const concerns1Raw = data.categories['concern'] || [];
+                    const concerns2Raw = data.categories['concern 2'] || [];
+                    const concerns3Raw = data.categories['concern 3'] || [];
 
-                    // Keep concerns separate for each dropdown
-                    // Remove duplicates within each concern category
-                    const concerns1 = [...new Set(data.categories['concern'] || [])].sort();
-                    const concerns2 = [...new Set(data.categories['concern 2'] || [])].sort();
-                    const concerns3 = [...new Set(data.categories['concern 3'] || [])].sort();
+                    // Convert to consistent format: array of {value, label} objects
+                    const parseCategories = (items) => {
+                        if (items.length === 0) return [];
+
+                        // If already in new format {value, label}
+                        if (items[0] && typeof items[0] === 'object' && 'value' in items[0]) {
+                            return items;
+                        }
+
+                        // If in old format (strings), convert to new format
+                        return items.map(item => ({
+                            value: item,
+                            label: item
+                        }));
+                    };
+
+                    const skinTypes = parseCategories(skinTypesRaw);
+                    const concerns1 = parseCategories(concerns1Raw);
+                    const concerns2 = parseCategories(concerns2Raw);
+                    const concerns3 = parseCategories(concerns3Raw);
 
                     setCategories({
                         skinTypes: skinTypes,
@@ -56,14 +78,14 @@ const Formpage = () => {
                         concerns2: concerns2,
                         concerns3: concerns3
                     });
-
+                    setSuccessMessage("Categories loaded successfully");
                 } else {
                     throw new Error("Invalid response format from server");
                 }
             } catch (error) {
                 console.error("Error fetching categories:", error);
-                setError(
-                    `Failed to load form options. Please ensure the backend server is running at http://localhost:5000`
+                setApiError(
+                    `Failed to load form options. Please ensure the backend server is running at ${API_BASE_URL}`
                 );
             } finally {
                 setIsFetchingCategories(false);
@@ -71,7 +93,7 @@ const Formpage = () => {
         };
 
         fetchCategories();
-    }, []); // Empty dependency array means this runs once on mount
+    }, []);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -80,15 +102,22 @@ const Formpage = () => {
             [name]: value,
         });
         // Clear error when user makes changes
-        if (error) setError("");
+        if (apiError) setApiError("");
     };
 
     const handleSubmit = async (e) => {
         e.preventDefault();
         setIsLoading(true);
-        setError("");
+        setApiError("");
 
-        // Send the exact values from the dropdown (no transformation needed)
+        // Validate form
+        if (!formData.skinType || !formData.concern1 || !formData.concern2 || !formData.concern3) {
+            setApiError("Please fill in all fields");
+            setIsLoading(false);
+            return;
+        }
+
+        // Send request with correct API endpoint
         const userInput = {
             skin_type: formData.skinType,
             concern_1: formData.concern1,
@@ -100,27 +129,26 @@ const Formpage = () => {
         console.log("Sending request:", userInput);
 
         try {
-            const response = await fetch(
-                "http://localhost:5000/recommend",
-                {
-                    method: "POST",
-                    headers: {
-                        "Content-Type": "application/json",
-                    },
-                    body: JSON.stringify(userInput),
-                }
-            );
+            const response = await fetch(`${API_BASE_URL}/api/recommend`, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(userInput),
+            });
 
             const data = await response.json();
+
             if (!response.ok) {
-                throw new Error(data.error || `HTTP error! status: ${response.status}`);
+                throw new Error(data.message || `HTTP error! status: ${response.status}`);
             }
 
             if (data.error) {
-                setError(data.error);
+                setApiError(data.error);
                 setIsLoading(false);
                 return;
             }
+
             console.log("Received recommendations:", data.recommendations);
 
             // Navigate to results page with recommendations
@@ -133,7 +161,7 @@ const Formpage = () => {
 
         } catch (error) {
             console.error("Error fetching recommendations:", error);
-            setError(error.message || "Failed to retrieve recommendations. Please try again.");
+            setApiError(error.message || "Failed to retrieve recommendations. Please try again.");
         } finally {
             setIsLoading(false);
         }
@@ -143,19 +171,19 @@ const Formpage = () => {
     // This prevents selecting the same concern multiple times across different dropdowns
     const getAvailableConcerns1 = () => {
         return categories.concerns1.filter(concern =>
-            concern !== formData.concern2 && concern !== formData.concern3
+            concern.value != formData.concern2 && concern.value != formData.concern3
         );
     };
 
     const getAvailableConcerns2 = () => {
         return categories.concerns2.filter(concern =>
-            concern !== formData.concern1 && concern !== formData.concern3
+            concern.value != formData.concern1 && concern.value != formData.concern3
         );
     };
 
     const getAvailableConcerns3 = () => {
         return categories.concerns3.filter(concern =>
-            concern !== formData.concern1 && concern !== formData.concern2
+            concern.value != formData.concern1 && concern.value != formData.concern2
         );
     };
 
@@ -174,17 +202,24 @@ const Formpage = () => {
                     <h3>Fill Below Information to know your skincare products.</h3>
 
                     {/* Error Message Display */}
-                    {error && (
-                        <div style={{
-                            backgroundColor: '#fee',
-                            color: '#c33',
-                            padding: '10px',
-                            borderRadius: '5px',
-                            marginBottom: '15px',
-                            border: '1px solid #fcc',
-                            fontSize: '14px'
-                        }}>
-                            {error}
+                    {apiError && (
+                        <div className="alert alert-danger" role="alert">
+                            <span>⚠️ {apiError}</span>
+                        </div>
+                    )}
+
+                    {/* Success Message Display */}
+                    {successMessage && !isFetchingCategories && (
+                        <div className="alert alert-success" role="alert">
+                            <span>✓ {successMessage}</span>
+                        </div>
+                    )}
+
+                    {/* Loading State */}
+                    {isFetchingCategories && (
+                        <div className="loading-spinner">
+                            <div className="spinner"></div>
+                            <p>Loading form options...</p>
                         </div>
                     )}
 
@@ -198,8 +233,8 @@ const Formpage = () => {
                     >
                         <option value="">Select</option>
                         {categories.skinTypes.map(skinType => (
-                            <option key={skinType} value={skinType}>
-                                {skinType}
+                            <option key={skinType.value} value={skinType.value}>
+                                {skinType.label}
                             </option>
                         ))}
                     </select>
@@ -214,8 +249,8 @@ const Formpage = () => {
                     >
                         <option value="">Select</option>
                         {getAvailableConcerns1().map(concern => (
-                            <option key={concern} value={concern}>
-                                {concern}
+                            <option key={concern.value} value={concern.value}>
+                                {concern.label}
                             </option>
                         ))}
                     </select>
@@ -230,8 +265,8 @@ const Formpage = () => {
                     >
                         <option value="">Select</option>
                         {getAvailableConcerns2().map(concern => (
-                            <option key={concern} value={concern}>
-                                {concern}
+                            <option key={concern.value} value={concern.value}>
+                                {concern.label}
                             </option>
                         ))}
                     </select>
@@ -246,8 +281,8 @@ const Formpage = () => {
                     >
                         <option value="">Select</option>
                         {getAvailableConcerns3().map(concern => (
-                            <option key={concern} value={concern}>
-                                {concern}
+                            <option key={concern.value} value={concern.value}>
+                                {concern.label}
                             </option>
                         ))}
                     </select>
