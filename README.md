@@ -90,7 +90,7 @@ cd ml_model
 python -m venv venv
 # Windows: .\venv\Scripts\activate
 # macOS/Linux: source venv/bin/activate
-pip install flask flask_cors pandas numpy scikit-learn
+pip install flask flask-cors pandas numpy scikit-learn imbalanced-learn
 python app.py
 # → http://localhost:5000
 ```
