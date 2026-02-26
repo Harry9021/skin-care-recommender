@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { IoMdArrowRoundBack } from "react-icons/io";
 
 const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const AUTH_TOKEN_KEY = "authToken";
 
 const Formpage = () => {
     const [formData, setFormData] = useState({
@@ -30,15 +31,36 @@ const Formpage = () => {
 
     const navigate = useNavigate();
 
+    const getAuthToken = () => localStorage.getItem(AUTH_TOKEN_KEY);
+
+    const getAuthHeaders = () => {
+        const token = getAuthToken();
+        return token ? { Authorization: `Bearer ${token}` } : {};
+    };
+
     // Fetch available categories from backend on component mount
     useEffect(() => {
         const fetchCategories = async () => {
             try {
+                if (!getAuthToken()) {
+                    navigate("/");
+                    return;
+                }
+
                 setIsFetchingCategories(true);
                 setApiError("");
-                const response = await fetch(`${API_BASE_URL}/api/categories`);
+                const response = await fetch(`${API_BASE_URL}/api/categories`, {
+                    headers: {
+                        ...getAuthHeaders()
+                    }
+                });
 
                 if (!response.ok) {
+                    if (response.status === 401) {
+                        localStorage.removeItem(AUTH_TOKEN_KEY);
+                        navigate("/");
+                        return;
+                    }
                     throw new Error(`Failed to fetch categories: ${response.status}`);
                 }
 
@@ -93,7 +115,7 @@ const Formpage = () => {
         };
 
         fetchCategories();
-    }, []);
+    }, [navigate]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -133,6 +155,7 @@ const Formpage = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    ...getAuthHeaders()
                 },
                 body: JSON.stringify(userInput),
             });
@@ -140,6 +163,11 @@ const Formpage = () => {
             const data = await response.json();
 
             if (!response.ok) {
+                if (response.status === 401) {
+                    localStorage.removeItem(AUTH_TOKEN_KEY);
+                    navigate("/");
+                    return;
+                }
                 throw new Error(data.message || `HTTP error! status: ${response.status}`);
             }
 

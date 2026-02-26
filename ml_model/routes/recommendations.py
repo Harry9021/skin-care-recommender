@@ -9,6 +9,7 @@ from utils.logger import setup_logger
 from utils.validators import InputValidator
 from utils.errors import SkincareException
 from models.recommendation import model
+from middleware.auth_middleware import require_auth
 
 logger = setup_logger(__name__)
 
@@ -127,6 +128,7 @@ CONCERNS_MAPPING = {
 }
 
 @bp.route('/recommend', methods=['POST'])
+@require_auth
 def recommend():
     """
     Get skincare product recommendations
@@ -198,6 +200,7 @@ def recommend():
         }), 500
 
 @bp.route('/categories', methods=['GET'])
+@require_auth
 def categories():
     """
     Get available categories (skin types and concerns)
@@ -299,6 +302,7 @@ def categories():
         }), 500
 
 @bp.route('/model-info', methods=['GET'])
+@require_auth
 def model_info():
     """
     Get model information and performance metrics

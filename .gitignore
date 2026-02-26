@@ -2,3 +2,16 @@ venv
 node_modules
 .env
 ml_model/.env
+
+pycache
+ml_model/config/__pycache__
+ml_model/models/__pycache__
+ml_model/routes/__pycache__
+ml_model/utils/__pycache__
+ml_model/middleware/__pycache__
+ml_model/tests/__pycache__
+ml_model/scripts/__pycache__
+ml_model/data/__pycache__
+ml_model/venv/__pycache__
+ml_model/logs/__pycache__
+ml_model/data/__pycache__

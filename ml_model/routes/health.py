@@ -3,10 +3,12 @@ Health Check Routes
 """
 from flask import Blueprint, jsonify, current_app
 from datetime import datetime
+from middleware.auth_middleware import require_auth
 
 bp = Blueprint('health', __name__, url_prefix='')
 
 @bp.route('/', methods=['GET'])
+@require_auth
 def root():
     """Root endpoint - API info"""
     return jsonify({
@@ -24,6 +26,7 @@ def root():
     }), 200
 
 @bp.route('/health', methods=['GET'])
+@require_auth
 def health():
     """Health check endpoint"""
     from models.recommendation import model
@@ -37,6 +40,7 @@ def health():
     }), 200
 
 @bp.route('/docs', methods=['GET'])
+@require_auth
 def docs():
     """API documentation"""
     return jsonify({

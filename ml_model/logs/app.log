@@ -87,3 +87,45 @@
 [2026-02-26 18:41:36] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
 [2026-02-26 18:41:36] INFO     skincare_api        : [OK] API initialized successfully!
 
+[2026-02-26 19:04:39] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 19:04:39] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 19:04:39] INFO     skincare_api        : Environment: type
+[2026-02-26 19:04:39] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\ml_model\skincare_model_enhanced.pkl...
+[2026-02-26 19:04:39] INFO     skincare_api        : Model path exists: True
+[2026-02-26 19:04:39] INFO     skincare_api        : [OK] Model loaded successfully
+[2026-02-26 19:04:39] INFO     skincare_api        :   - Model accuracy: 0.5699658703071673
+[2026-02-26 19:04:39] INFO     skincare_api        :   - Training timestamp: N/A
+[2026-02-26 19:04:39] INFO     skincare_api        : Attempting to load dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv
+[2026-02-26 19:04:39] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 19:04:39] INFO     skincare_api        : Loading dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv...
+[2026-02-26 19:04:39] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 19:04:39] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 19:07:32] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 19:07:32] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 19:07:32] INFO     skincare_api        : Environment: type
+[2026-02-26 19:07:32] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\ml_model\skincare_model_enhanced.pkl...
+[2026-02-26 19:07:32] INFO     skincare_api        : Model path exists: True
+[2026-02-26 19:07:32] INFO     skincare_api        : [OK] Model loaded successfully
+[2026-02-26 19:07:32] INFO     skincare_api        :   - Model accuracy: 0.5699658703071673
+[2026-02-26 19:07:32] INFO     skincare_api        :   - Training timestamp: N/A
+[2026-02-26 19:07:32] INFO     skincare_api        : Attempting to load dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv
+[2026-02-26 19:07:32] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 19:07:32] INFO     skincare_api        : Loading dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv...
+[2026-02-26 19:07:32] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 19:07:32] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 19:21:55] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 19:21:55] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 19:21:55] INFO     skincare_api        : Environment: type
+[2026-02-26 19:21:55] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\ml_model\skincare_model_enhanced.pkl...
+[2026-02-26 19:21:55] INFO     skincare_api        : Model path exists: True
+[2026-02-26 19:21:55] INFO     skincare_api        : [OK] Model loaded successfully
+[2026-02-26 19:21:55] INFO     skincare_api        :   - Model accuracy: 0.5699658703071673
+[2026-02-26 19:21:55] INFO     skincare_api        :   - Training timestamp: N/A
+[2026-02-26 19:21:55] INFO     skincare_api        : Attempting to load dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv
+[2026-02-26 19:21:55] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 19:21:55] INFO     skincare_api        : Loading dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv...
+[2026-02-26 19:21:55] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 19:21:55] INFO     skincare_api        : [OK] API initialized successfully!
+

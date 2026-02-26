@@ -1,22 +1,25 @@
 .home-content {
     display: flex;
     align-items: center;
-    height: 80vh;
+    min-height: calc(100vh - 151px);
     justify-content: space-between;
-    flex-wrap: wrap; /* Allows content to wrap on smaller screens */
-    padding: 0 5vw; /* Add padding for smaller screens */
+    flex-wrap: wrap;
+    padding: 24px 5vw;
+    gap: 24px;
 }
 
 .imager {
-    padding-left: 4%;
+    padding-left: 0;
     display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
     align-items: center;
     justify-content: center;
+}
 
-    > img {
-        width: 204px;
-        height: 302px;
-    }
+.imager > img {
+    width: clamp(120px, 11vw, 204px);
+    height: auto;
 }
 
 .image-1, .image-3 {
@@ -24,41 +27,34 @@
 }
 
 .written-content {
-    width: 30vw;
-    padding-right: 4%;
+    width: min(100%, 460px);
+    padding-right: 0;
 }
 
 .written {
     color: #5BA2BC;
-    font-size: 24px;
-    padding-bottom: 15vh;
+    font-size: clamp(1.05rem, 1.8vw, 1.45rem);
+    line-height: 1.5;
+    padding-bottom: 26px;
 }
 
 .try-button {
-    width: 270px;
-    height: 69px;
-    font-size: 36px;
+    width: min(100%, 260px);
+    height: 56px;
+    font-size: 1.4rem;
     background: #3BA2DA;
     border: none;
     color: #ffffff;
     border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
 }
 
 /* Responsive Styles */
 @media (max-width: 1200px) {
-    .written-content {
-        width: 40vw;
-    }
-
-    .imager > img {
-        width: 180px;
-        height: 270px;
-    }
-
     .try-button {
-        width: 220px;
-        height: 60px;
-        font-size: 30px;
+        height: 52px;
+        font-size: 1.2rem;
     }
 }
 
@@ -66,51 +62,37 @@
     .home-content {
         flex-direction: column;
         height: auto;
-        padding: 0 10vw;
+        padding: 18px 10vw 28px;
     }
 
     .written-content {
         width: 100%;
         padding-right: 0;
         padding-bottom: 20px;
-        text-align: center; /* Center text for smaller screens */
+        text-align: center;
+        order: 1;
     }
 
     .imager {
-        padding-left: 0;
-    }
-
-    .imager > img {
-        width: 150px;
-        height: 220px;
+        order: 2;
     }
 
     .try-button {
-        width: 200px;
-        height: 55px;
-        font-size: 28px;
+        width: min(100%, 220px);
     }
 
     .written {
-        font-size: 22px;
-        padding-bottom: 10vh;
+        padding-bottom: 20px;
     }
 }
 
 @media (max-width: 480px) {
     .imager > img {
-        width: 120px;
-        height: 180px;
+        width: min(42vw, 140px);
     }
 
     .try-button {
-        width: 180px;
-        height: 50px;
-        font-size: 24px;
-    }
-
-    .written {
-        font-size: 20px;
-        padding-bottom: 5vh;
+        height: 48px;
+        font-size: 1.05rem;
     }
 }

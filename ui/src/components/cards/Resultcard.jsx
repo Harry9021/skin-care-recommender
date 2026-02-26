@@ -14,9 +14,13 @@ function Resultcard({ item, recommendationNumber, addToCart }) {
             <div className="res-img">{recommendationNumber}.</div> {/* Replace with actual image later */}
             <div className="res-details">
                 <div className="res-details-upper">
-                    <div className="res-brand capitalize">{item.label}</div>
+                    <div className="res-brand capitalize truncate-text" title={item.label}>
+                        {item.label}
+                    </div>
                     <div className="res-name">
-                        <span className="res-name-span capitalize" title={item.name}>{item.name}</span>
+                        <span className="res-name-span capitalize truncate-text" title={item.name}>
+                            {item.name}
+                        </span>
                     </div>
                 </div>
                 <div className="res-details-lower">

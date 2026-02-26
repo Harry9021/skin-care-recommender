@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { Link } from "react-router-dom";
+import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import "../Styles/Home.css";
 import "../Styles/Navbar.css";
 import DownArrow from "../Vectors/downarrow.svg";
@@ -10,20 +10,93 @@ import image3 from "../Vectors/image3.png";
 import image4 from "../Vectors/image4.png";
 import { GoogleOAuthProvider, GoogleLogin } from "@react-oauth/google";
 
-export default function Home() {
-    const [dropdownOpen, setDropdownOpen] = useState(false);
-    const [isLogin, setIsLogin] = useState(true); // Toggle between Login and Signup
+const API_BASE_URL = process.env.REACT_APP_API_URL || "http://localhost:5000";
+const GOOGLE_CLIENT_ID = process.env.REACT_APP_GOOGLE_CLIENT_ID || "";
+const AUTH_TOKEN_KEY = "authToken";
+const AUTH_USER_KEY = "authUser";
 
-    const handleLoginSuccess = (response) => {
-        console.log("Login Success:", response);
+export default function Home() {
+    const navigate = useNavigate();
+    const [dropdownOpen, setDropdownOpen] = useState(false);
+    const [authError, setAuthError] = useState("");
+    const [isAuthLoading, setIsAuthLoading] = useState(false);
+    const [pendingTryNow, setPendingTryNow] = useState(false);
+    const [user, setUser] = useState(null);
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem(AUTH_USER_KEY);
+        if (storedUser) {
+            try {
+                setUser(JSON.parse(storedUser));
+            } catch (e) {
+                localStorage.removeItem(AUTH_USER_KEY);
+            }
+        }
+    }, []);
+
+    const isLoggedIn = !!localStorage.getItem(AUTH_TOKEN_KEY);
+
+    const handleOAuthSuccess = async (response) => {
+        try {
+            setAuthError("");
+            setIsAuthLoading(true);
+
+            const googleToken = response?.credential;
+            if (!googleToken) {
+                throw new Error("Google credential missing");
+            }
+
+            const authResponse = await fetch(`${API_BASE_URL}/api/auth/google`, {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ token: googleToken })
+            });
+
+            const data = await authResponse.json();
+            if (!authResponse.ok || !data.token) {
+                throw new Error(data.message || "OAuth login failed");
+            }
+
+            localStorage.setItem(AUTH_TOKEN_KEY, data.token);
+            localStorage.setItem(AUTH_USER_KEY, JSON.stringify(data.user || {}));
+            setUser(data.user || null);
+            setDropdownOpen(false);
+
+            if (pendingTryNow) {
+                setPendingTryNow(false);
+                navigate("/form");
+            }
+        } catch (error) {
+            setAuthError(error.message || "Login failed. Please try again.");
+        } finally {
+            setIsAuthLoading(false);
+        }
     };
 
-    const handleLoginFailure = (response) => {
-        console.error("Login Failed:", response);
+    const handleOAuthFailure = () => {
+        setAuthError("Google login was cancelled or failed.");
+    };
+
+    const handleTryNowClick = () => {
+        if (isLoggedIn) {
+            navigate("/form");
+            return;
+        }
+        setPendingTryNow(true);
+        setDropdownOpen(true);
+        setAuthError("Please login with Google to continue.");
+    };
+
+    const handleLogout = () => {
+        localStorage.removeItem(AUTH_TOKEN_KEY);
+        localStorage.removeItem(AUTH_USER_KEY);
+        setUser(null);
+        setPendingTryNow(false);
+        setAuthError("");
     };
 
     return (
-        <GoogleOAuthProvider clientId="YOUR_GOOGLE_CLIENT_ID">
+        <GoogleOAuthProvider clientId={GOOGLE_CLIENT_ID || "YOUR_GOOGLE_CLIENT_ID"}>
             <div className="home">
                 <div className="navbar">
                     <div className="logger-black"></div>
@@ -34,8 +107,12 @@ export default function Home() {
                             onClick={() => setDropdownOpen(!dropdownOpen)}
                         >
                             <div className="loginButton">
-                                <div style={{ fontSize: 20 }}>Login/Signup</div>
-                                <div style={{ fontSize: 24 }}>My Account</div>
+                                <div style={{ fontSize: 20 }}>
+                                    {isLoggedIn ? "Logged In" : "Login with Google"}
+                                </div>
+                                <div style={{ fontSize: 24 }}>
+                                    {user?.name || "My Account"}
+                                </div>
                             </div>
                             <div className="arrow">
                                 <img src={DownArrow} alt="dropdown arrow" />
@@ -43,91 +120,38 @@ export default function Home() {
                         </div>
                         {dropdownOpen && (
                             <div className="popup-menu">
-                                {isLogin ? (
-                                    <div className="popup-login">
-                                        <h2
-                                            style={{
-                                                fontFamily: "Satisfy, cursive",
-                                                fontSize: "24px",
-                                            }}
-                                        >
-                                            Welcome Back!
-                                        </h2>
-
-                                        <input
-                                            type="email"
-                                            placeholder="Email"
-                                        />
-                                        <input
-                                            type="password"
-                                            placeholder="Password"
-                                        />
-                                        <button className="login-button">
-                                            Login
-                                        </button>
-                                        <p style={{ marginTop: "20px" }}>
-                                            New customer?{" "}
-                                            <span
-                                                onClick={() =>
-                                                    setIsLogin(false)
-                                                }
-                                            >
-                                                Create your account
-                                            </span>
+                                <div className="popup-login">
+                                    <h2
+                                        style={{
+                                            fontFamily: "Satisfy, cursive",
+                                            fontSize: "24px",
+                                        }}
+                                    >
+                                        {isLoggedIn ? "Welcome" : "Sign in with Google"}
+                                    </h2>
+                                    {authError && (
+                                        <p style={{ color: "#c62828", margin: "8px 0", textAlign: "center" }}>
+                                            {authError}
                                         </p>
+                                    )}
+                                    {!isLoggedIn ? (
                                         <div className="google-auth">
                                             <GoogleLogin
-                                                onSuccess={handleLoginSuccess}
-                                                onError={handleLoginFailure}
+                                                onSuccess={handleOAuthSuccess}
+                                                onError={handleOAuthFailure}
                                             />
                                         </div>
-                                    </div>
-                                ) : (
-                                    <div className="popup-signup">
-                                        <h2
-                                            style={{
-                                                fontFamily: "Satisfy, cursive",
-                                                fontSize: "24px",
-                                            }}
-                                        >
-                                            Welcome!
-                                        </h2>
-                                        <input type="text" placeholder="Name" />
-                                        <input
-                                            type="text"
-                                            placeholder="Gender"
-                                        />
-                                        <input
-                                            type="email"
-                                            placeholder="Email"
-                                        />
-                                        <input
-                                            type="password"
-                                            placeholder="New Password"
-                                        />
-                                        <input
-                                            type="password"
-                                            placeholder="Confirm Password"
-                                        />
-                                        <button className="signup-button">
-                                            Sign Up
+                                    ) : (
+                                        <button className="login-button" onClick={handleLogout}>
+                                            Logout
                                         </button>
-                                        <p style={{ marginTop: "20px" }}>
-                                            Already have an account?{" "}
-                                            <span
-                                                onClick={() => setIsLogin(true)}
-                                            >
-                                                Login
-                                            </span>
+                                    )}
+                                    {isAuthLoading && (
+                                        <p style={{ marginTop: "12px", textAlign: "center" }}>
+                                            Signing you in...
                                         </p>
-                                        <div className="google-auth">
-                                            <GoogleLogin
-                                                onSuccess={handleLoginSuccess}
-                                                onError={handleLoginFailure}
-                                            />
-                                        </div>
-                                    </div>
-                                )}
+                                    )}
+                                </div>
                             </div>
                         )}
                         <Link to="/cart">
@@ -152,9 +176,7 @@ export default function Home() {
                             routine that works for you.
                         </div>
                         <div className="try-button-div">
-                            <Link to="/form">
-                                <button className="try-button">Try Now</button>
-                            </Link>
+                            <button className="try-button" onClick={handleTryNowClick}>Try Now</button>
                         </div>
                     </div>
                 </div>
