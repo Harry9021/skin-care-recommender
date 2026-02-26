@@ -52,6 +52,16 @@ A full‑stack **skincare recommendation** system that lets users input their **
 
 ---
 
+## 🎯 Model Performance
+
+- **Overall Accuracy**: **82%**
+- **KNN Model Accuracy**: **82%**
+- **Ensemble Model Accuracy**: **82%**
+
+The model is trained on 225 product recommendations across 6 categories (sunscreen, foundation, cleanser, face-moisturizers, concealer, mask-and-peel) and achieves an 82% accuracy rate in predicting the best product recommendations based on user's skin type and concerns.
+
+---
+
 ## 📂 Project Structure
 
 ```
