@@ -1,0 +1,89 @@
+[2026-02-26 17:43:54] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 17:43:54] INFO     skincare_api        : Environment: type
+[2026-02-26 17:43:54] INFO     skincare_api        : Loading model from skincare_model_enhanced.pkl...
+[2026-02-26 17:43:54] INFO     skincare_api        :   Model will be available after training
+[2026-02-26 17:43:54] ERROR    skincare_api        : Failed to start server: 'charmap' codec can't encode character '\U0001f9f4' in position 0: character maps to <undefined>
+[2026-02-26 17:47:28] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 17:47:28] INFO     skincare_api        : Environment: type
+[2026-02-26 17:47:28] INFO     skincare_api        : Loading model from ../skincare_model_enhanced.pkl...
+[2026-02-26 17:47:29] WARNING  skincare_api        : [!] Could not load model from ../skincare_model_enhanced.pkl
+[2026-02-26 17:47:29] INFO     skincare_api        :   Model will be available after training
+[2026-02-26 17:47:29] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 17:58:20] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 17:58:20] INFO     skincare_api        : Environment: type
+[2026-02-26 17:58:20] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\skincare_model_enhanced.pkl...
+[2026-02-26 17:58:20] INFO     skincare_api        : Model path exists: True
+[2026-02-26 17:58:20] WARNING  skincare_api        : [!] Failed to load model from H:\projects\skin-care-recommender\skincare_model_enhanced.pkl
+[2026-02-26 17:58:20] INFO     skincare_api        :   Model will be available after training
+[2026-02-26 17:58:20] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 18:06:33] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 18:06:33] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 18:06:33] INFO     skincare_api        : Environment: type
+[2026-02-26 18:06:33] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\skincare_model_enhanced.pkl...
+[2026-02-26 18:06:33] INFO     skincare_api        : Model path exists: True
+[2026-02-26 18:06:33] WARNING  skincare_api        : [!] Failed to load model from H:\projects\skin-care-recommender\skincare_model_enhanced.pkl
+[2026-02-26 18:06:33] INFO     skincare_api        :   Model will be available after training
+[2026-02-26 18:06:33] INFO     skincare_api        : Attempting to load dataset from to_be_use_dataset.csv
+[2026-02-26 18:06:33] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 18:06:33] INFO     skincare_api        : Loading dataset from to_be_use_dataset.csv...
+[2026-02-26 18:06:33] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 18:06:33] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 18:16:08] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 18:16:08] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 18:16:08] INFO     skincare_api        : Environment: type
+[2026-02-26 18:16:08] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\skincare_model_enhanced.pkl...
+[2026-02-26 18:16:08] INFO     skincare_api        : Model path exists: True
+[2026-02-26 18:16:08] INFO     skincare_api        : [OK] Model loaded successfully
+[2026-02-26 18:16:08] INFO     skincare_api        :   - Model accuracy: 0.5707317073170731
+[2026-02-26 18:16:08] INFO     skincare_api        :   - Training timestamp: N/A
+[2026-02-26 18:16:08] INFO     skincare_api        : Attempting to load dataset from to_be_use_dataset.csv
+[2026-02-26 18:16:08] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 18:16:08] INFO     skincare_api        : Loading dataset from to_be_use_dataset.csv...
+[2026-02-26 18:16:08] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 18:16:08] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 18:18:29] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 18:18:29] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 18:18:29] INFO     skincare_api        : Environment: type
+[2026-02-26 18:18:29] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\skincare_model_enhanced.pkl...
+[2026-02-26 18:18:29] INFO     skincare_api        : Model path exists: True
+[2026-02-26 18:18:29] INFO     skincare_api        : [OK] Model loaded successfully
+[2026-02-26 18:18:29] INFO     skincare_api        :   - Model accuracy: 0.5707317073170731
+[2026-02-26 18:18:29] INFO     skincare_api        :   - Training timestamp: N/A
+[2026-02-26 18:18:29] INFO     skincare_api        : Attempting to load dataset from to_be_use_dataset.csv
+[2026-02-26 18:18:29] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 18:18:29] INFO     skincare_api        : Loading dataset from to_be_use_dataset.csv...
+[2026-02-26 18:18:29] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 18:18:29] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 18:30:45] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 18:30:45] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 18:30:45] INFO     skincare_api        : Environment: type
+[2026-02-26 18:30:45] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\ml_model\skincare_model_enhanced.pkl...
+[2026-02-26 18:30:45] INFO     skincare_api        : Model path exists: True
+[2026-02-26 18:30:45] INFO     skincare_api        : [OK] Model loaded successfully
+[2026-02-26 18:30:45] INFO     skincare_api        :   - Model accuracy: 0.5699658703071673
+[2026-02-26 18:30:45] INFO     skincare_api        :   - Training timestamp: N/A
+[2026-02-26 18:30:45] INFO     skincare_api        : Attempting to load dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv
+[2026-02-26 18:30:45] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 18:30:45] INFO     skincare_api        : Loading dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv...
+[2026-02-26 18:30:45] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 18:30:45] INFO     skincare_api        : [OK] API initialized successfully!
+
+[2026-02-26 18:41:36] INFO     skincare_api        : Current working directory: H:\projects\skin-care-recommender\ml_model
+[2026-02-26 18:41:36] INFO     skincare_api        : Initializing Skincare Recommendation API...
+[2026-02-26 18:41:36] INFO     skincare_api        : Environment: type
+[2026-02-26 18:41:36] INFO     skincare_api        : Loading model from H:\projects\skin-care-recommender\ml_model\skincare_model_enhanced.pkl...
+[2026-02-26 18:41:36] INFO     skincare_api        : Model path exists: True
+[2026-02-26 18:41:36] INFO     skincare_api        : [OK] Model loaded successfully
+[2026-02-26 18:41:36] INFO     skincare_api        :   - Model accuracy: 0.5699658703071673
+[2026-02-26 18:41:36] INFO     skincare_api        :   - Training timestamp: N/A
+[2026-02-26 18:41:36] INFO     skincare_api        : Attempting to load dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv
+[2026-02-26 18:41:36] INFO     skincare_api        : Dataset path exists: True
+[2026-02-26 18:41:36] INFO     skincare_api        : Loading dataset from H:\projects\skin-care-recommender\ml_model\to_be_use_dataset.csv...
+[2026-02-26 18:41:36] INFO     skincare_api        : [OK] Dataset loaded: 1463 rows
+[2026-02-26 18:41:36] INFO     skincare_api        : [OK] API initialized successfully!
+

@@ -5,10 +5,14 @@
   "description": "Full-stack Skin Care Recommendation System with React and Flask ML model.",
   "main": "index.js",
   "scripts": {
+    "start": "node scripts/setup.js",
+    "setup": "node scripts/setup.js",
     "dev": "concurrently -k -n MODEL,SERVER,CLIENT -c yellow,green,cyan \"npm run model\" \"npm run client\"",
     "model": "node scripts/runModel.js",
     "client": "cd ui && npm start",
-    "build": "cd ui && npm run build"
+    "build": "cd ui && npm run build",
+    "setup:backend": "node scripts/runModel.js",
+    "setup:frontend": "cd ui && npm install"
   },
   "devDependencies": {
     "concurrently": "^8.2.2"
