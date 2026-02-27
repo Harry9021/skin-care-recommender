@@ -2,9 +2,9 @@ import pandas as pd
 
 
 # Save the cleaned data to a new CSV file
-cleaned_file_path = 'skin-care-recommender/ml_model/cleaned_result.csv'
-data = pd.read_csv(cleaned_file_path)
-# data_cleaned.to_csv(cleaned_file_path, index=False)
+df = pd.read_csv('skin-care-recommender/ml_model/cleaned_result.csv')
+df.to_csv('skin-care-recommender/ml_model/to_be_use_dataset.csv', index=False)
+data = df
 
 # Extract unique values from 'skin type' and 'concern'
 # unique_skin_types = data_cleaned['skin type'].unique().tolist()
