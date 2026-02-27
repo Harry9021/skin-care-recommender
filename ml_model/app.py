@@ -78,8 +78,14 @@ def handle_internal_error(err):
     }), 500
 
 # Load model on startup
+_is_initialized = False
+
 def init_app():
     """Initialize app with model"""
+    global _is_initialized
+    if _is_initialized:
+        return
+
     import os as os_module
     current_cwd = os_module.getcwd()
     logger.info(f"Current working directory: {current_cwd}")
@@ -132,6 +138,14 @@ def init_app():
                 logger.warning(f"[!] Fallback also failed: {str(e)}")
     
     logger.info("[OK] API initialized successfully!\n")
+    _is_initialized = True
+
+# Ensure initialization also runs in serverless imports (e.g., Vercel),
+# where __main__ block is not executed.
+try:
+    init_app()
+except Exception as e:
+    logger.error(f"Startup initialization failed during import: {str(e)}")
 
 # ==================== MAIN ENTRY POINT ====================
 
