@@ -35,10 +35,10 @@ app.config['JSON_SORT_KEYS'] = False
 # CORS setup
 CORS(app, resources={
     r"/api/*": {
-        "origins": "*",
+        "origins": active_config.CORS_ORIGINS,
         "methods": ["GET", "POST", "OPTIONS"],
         "allow_headers": ["Content-Type", "Authorization"],
-        "supports_credentials": True
+        "supports_credentials": False
     }
 })
 
