@@ -13,6 +13,11 @@
 
 A **full-stack machine learning application** that provides personalized skincare product recommendations based on skin type and up to three skin concerns. Features a professional Python/Flask backend with ML ensemble model and responsive React frontend.
 
+## 🌐 Live URLs
+
+- Frontend: `https://skincarerecommender.vercel.app`
+- Backend API: `https://skin-care-recommender.vercel.app`
+
 ### ✨ Key Features
 
 ✅ **AI-Powered Recommendations** - Ensemble model (KNN + Random Forest) with 82% accuracy
