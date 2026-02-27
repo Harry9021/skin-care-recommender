@@ -33,16 +33,12 @@ const Formpage = () => {
 
     const getAuthToken = () => localStorage.getItem(AUTH_TOKEN_KEY);
 
-    const getAuthHeaders = () => {
-        const token = getAuthToken();
-        return token ? { Authorization: `Bearer ${token}` } : {};
-    };
-
     // Fetch available categories from backend on component mount
     useEffect(() => {
         const fetchCategories = async () => {
             try {
-                if (!getAuthToken()) {
+                const token = getAuthToken();
+                if (!token) {
                     navigate("/");
                     return;
                 }
@@ -51,7 +47,7 @@ const Formpage = () => {
                 setApiError("");
                 const response = await fetch(`${API_BASE_URL}/api/categories`, {
                     headers: {
-                        ...getAuthHeaders()
+                        Authorization: `Bearer ${token}`
                     }
                 });
 
@@ -155,7 +151,7 @@ const Formpage = () => {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    ...getAuthHeaders()
+                    Authorization: `Bearer ${getAuthToken()}`
                 },
                 body: JSON.stringify(userInput),
             });
@@ -199,19 +195,19 @@ const Formpage = () => {
     // This prevents selecting the same concern multiple times across different dropdowns
     const getAvailableConcerns1 = () => {
         return categories.concerns1.filter(concern =>
-            concern.value != formData.concern2 && concern.value != formData.concern3
+            concern.value !== formData.concern2 && concern.value !== formData.concern3
         );
     };
 
     const getAvailableConcerns2 = () => {
         return categories.concerns2.filter(concern =>
-            concern.value != formData.concern1 && concern.value != formData.concern3
+            concern.value !== formData.concern1 && concern.value !== formData.concern3
         );
     };
 
     const getAvailableConcerns3 = () => {
         return categories.concerns3.filter(concern =>
-            concern.value != formData.concern1 && concern.value != formData.concern2
+            concern.value !== formData.concern1 && concern.value !== formData.concern2
         );
     };
 
