@@ -22,6 +22,11 @@ def setup_logger(name, log_level=logging.INFO, log_file=None):
     """
     logger = logging.getLogger(name)
     logger.setLevel(log_level)
+    logger.propagate = False
+
+    # Avoid duplicate handlers when setup_logger is called repeatedly.
+    if logger.handlers:
+        return logger
     
     # Console handler with UTF-8 encoding
     console_handler = logging.StreamHandler(sys.stdout)
@@ -39,19 +44,23 @@ def setup_logger(name, log_level=logging.INFO, log_file=None):
     
     # File handler (optional)
     if log_file:
-        # Create logs directory if it doesn't exist
-        log_dir = os.path.dirname(log_file)
-        if log_dir and not os.path.exists(log_dir):
-            Path(log_dir).mkdir(parents=True, exist_ok=True)
-        
-        file_handler = RotatingFileHandler(
-            log_file,
-            maxBytes=10485760,  # 10MB
-            backupCount=5,
-            encoding='utf-8'
-        )
-        file_handler.setLevel(log_level)
-        file_handler.setFormatter(formatter)
-        logger.addHandler(file_handler)
+        try:
+            # Create logs directory if it doesn't exist
+            log_dir = os.path.dirname(log_file)
+            if log_dir and not os.path.exists(log_dir):
+                Path(log_dir).mkdir(parents=True, exist_ok=True)
+
+            file_handler = RotatingFileHandler(
+                log_file,
+                maxBytes=10485760,  # 10MB
+                backupCount=5,
+                encoding='utf-8'
+            )
+            file_handler.setLevel(log_level)
+            file_handler.setFormatter(formatter)
+            logger.addHandler(file_handler)
+        except OSError:
+            # Serverless runtimes (e.g., Vercel) may use read-only filesystems.
+            logger.warning("File logging disabled: filesystem is read-only for %s", log_file)
     
     return logger
